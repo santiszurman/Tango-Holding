@@ -180,9 +180,13 @@ section { position: relative; overflow: hidden; }
 .hero-slides { position: absolute; inset: 0; }
 .hero-slide {
   position: absolute; inset: 0;
-  opacity: 0; transition: opacity 1.1s ease-in-out;
+  opacity: 0; z-index: 1;
+  transition: opacity 1.1s ease-in-out;
 }
-.hero-slide.active { opacity: 1; }
+/* La foto saliente se queda opaca abajo mientras la nueva aparece encima:
+   así el hero nunca pasa por el negro del fondo durante la transición. */
+.hero-slide.prev { opacity: 1; transition: none; z-index: 1; }
+.hero-slide.active { opacity: 1; z-index: 2; }
 .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
 .hero-slide::after {
   content: ''; position: absolute; inset: 0;

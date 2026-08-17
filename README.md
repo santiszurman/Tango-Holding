@@ -125,6 +125,23 @@ que ya circulan entre los inversores vuelvan a funcionar.
 **No cambies esos nombres de archivo.** Si renombrás `reportes2q-2026.html`, rompés todos
 los PDFs que ya mandaste.
 
+### Los links dentro de los PDFs de los inversores
+
+Los reportes que se le mandan a cada inversor llevan links con esta forma:
+
+```
+https://www.tangoholding.com/_files/ugd/405a64_<archivo>.pdf
+```
+
+Esa era la URL pública que Wix le daba a cada archivo cuando el dominio estaba conectado.
+`netlify.toml` tiene una regla que redirige `/_files/ugd/*` al lugar donde los PDFs viven
+hoy. **Esa regla no se toca ni se borra**: sin ella, todos los links de los reportes ya
+enviados dan 404.
+
+La ventaja de que apunten a `tangoholding.com` y no directo a Wix es que el destino lo
+controlás vos: si algún día mudás los PDFs a otro servidor, cambiás la dirección de `to`
+en esa regla y listo. Los PDFs que ya están en la calle siguen funcionando.
+
 ### Dónde están los archivos PDF
 
 Los 172 reportes (525 MB) **siguen alojados en Wix**, en

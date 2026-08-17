@@ -51,9 +51,22 @@
   var timer = null;
   var DELAY = 5000;
 
+  var fadeTimer = null;
+
   function show(i) {
+    var previous = current;
     current = (i + slides.length) % slides.length;
+
+    // La diapositiva saliente queda visible por debajo durante el fundido.
+    slides.forEach(function (s) { s.classList.remove('prev'); });
+    if (previous !== current && slides[previous]) {
+      slides[previous].classList.add('prev');
+    }
     slides.forEach(function (s, n) { s.classList.toggle('active', n === current); });
+    if (fadeTimer) { clearTimeout(fadeTimer); }
+    fadeTimer = setTimeout(function () {
+      slides.forEach(function (s) { s.classList.remove('prev'); });
+    }, 1200);
     copies.forEach(function (s, n) { s.classList.toggle('active', n === current); });
     dots.forEach(function (d, n) {
       d.classList.toggle('active', n === current);
