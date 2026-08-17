@@ -81,17 +81,11 @@
     Referrer-Policy = "no-referrer"
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Los archivos del sitio conservan siempre el mismo nombre (proj-01.jpg, style.css…),
+# así que NO se pueden marcar como "immutable": el navegador se quedaría con la copia
+# vieja durante meses después de una actualización. Con must-revalidate el navegador
+# pregunta si cambió y, si no cambió, el servidor responde "sigue igual" sin reenviarlo.
 [[headers]]
-  for = "/assets/img/*"
+  for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"
