@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /reportes
+Disallow: /juankeser
+
+Sitemap: https://www.tangoholding.com/sitemap.xml
