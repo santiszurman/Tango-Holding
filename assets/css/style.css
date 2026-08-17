@@ -177,19 +177,21 @@ section { position: relative; overflow: hidden; }
   margin-top: var(--header-h);
   background: #000;
 }
-.hero-slides { position: absolute; inset: 0; }
-/* Fundido cruzado sin bajón a negro: la foto entrante aparece ENCIMA de la
-   saliente, y la saliente recién empieza a irse cuando la nueva ya la tapa
-   (de ahí el retardo de 1.1s). Todo con CSS, sin clases extra. */
+/* z-index propio: las fotos quedan encerradas en su propio contexto de
+   apilado, así el z-index que el JS le va subiendo a cada foto nunca puede
+   superar al del texto del hero. */
+.hero-slides { position: absolute; inset: 0; z-index: 1; }
+/* Fundido cruzado sin bajón a negro: ninguna foto se desvanece nunca. La que
+   entra aparece ENCIMA de la anterior (el z-index lo asigna el JS), así siempre
+   hay una imagen opaca cubriendo el fondo. */
 .hero-slide {
   position: absolute; inset: 0;
-  opacity: 0; z-index: 1;
-  transition: opacity 1.1s ease-in-out 1.1s;
+  opacity: 0;
+  transition: opacity 1.1s ease-in-out;
 }
-.hero-slide.active {
-  opacity: 1; z-index: 2;
-  transition: opacity 1.1s ease-in-out 0s;
-}
+.hero-slide.shown { opacity: 1; }
+/* Si el JS no llega a correr, al menos se ve la primera foto en vez de negro. */
+.hero-slides:not(.js) .hero-slide:first-child { opacity: 1; }
 .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
 .hero-slide::after {
   content: ''; position: absolute; inset: 0;

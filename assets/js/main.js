@@ -51,9 +51,24 @@
   var timer = null;
   var DELAY = 5000;
 
-  function show(i) {
+  var zTop = 1;
+
+  function show(i, instant) {
     current = (i + slides.length) % slides.length;
-    slides.forEach(function (s, n) { s.classList.toggle('active', n === current); });
+    // La foto entrante se apila ARRIBA de todo y aparece con un fundido; la
+    // anterior nunca se desvanece, se queda opaca abajo. Así el fondo nunca
+    // llega a verse y no hay parpadeo negro.
+    var slide = slides[current];
+    if (slide) {
+      zTop += 1;
+      slide.style.transition = 'none';
+      slide.classList.remove('shown');
+      slide.style.zIndex = zTop;
+      void slide.offsetHeight;                 // fuerza el recálculo
+      if (!instant) { slide.style.transition = ''; }
+      slide.classList.add('shown');
+      if (instant) { void slide.offsetHeight; slide.style.transition = ''; }
+    }
     copies.forEach(function (s, n) { s.classList.toggle('active', n === current); });
     dots.forEach(function (d, n) {
       d.classList.toggle('active', n === current);
@@ -68,11 +83,14 @@
   }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
+  var slidesBox = document.querySelector('.hero-slides');
+  if (slidesBox) { slidesBox.classList.add('js'); }
+
   if (slides.length) {
     dots.forEach(function (d, n) {
       d.addEventListener('click', function () { show(n); play(); });
     });
-    show(0);
+    show(0, true);
     play();
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) { stop(); } else { play(); }
