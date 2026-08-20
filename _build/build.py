@@ -9,7 +9,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from content import HERO_SLIDES, SERVICES, PROJECTS, ES, EN  # noqa: E402
+from content import (HERO_SLIDES, SERVICES, PROJECTS, ES, EN,  # noqa: E402
+                     CATEGORIES, PROJECT_CATEGORY)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LB_DATA = os.path.join(ROOT, "_build", "lightboxes.json")
@@ -52,11 +53,22 @@ def hero(t):
         cls = " active" if i == 0 else ""
         lazy = "" if i == 0 else 'loading="lazy" '
         act = ' class="active"' if i == 0 else ""
-        src = rel(t, "assets/img/" + s["img"])
+        base = rel(t, "assets/img/" + os.path.splitext(s["img"])[0])
         nl = "\n"
+        # La primera foto se carga ya; las otras dos recién cuando la página
+        # terminó de cargar (el JS les pone el src). Así la primera vista pesa
+        # dos fotos menos.
+        if i == 0:
+            fuentes = (f'<source srcset="{base}.webp" type="image/webp">'
+                       f'<img src="{base}.jpg" alt="" width="1440" height="960"'
+                       f' fetchpriority="high" decoding="async">')
+        else:
+            fuentes = (f'<source data-srcset="{base}.webp" type="image/webp">'
+                       f'<img data-src="{base}.jpg" alt="" width="1440" height="960"'
+                       f' decoding="async">')
         slides.append(
             f'        <div class="hero-slide{cls}">'
-            f'<img src="{src}" alt="" {lazy}decoding="async"></div>'
+            f'<picture>{fuentes}</picture></div>'
         )
         copies.append(
             f'        <div class="slide-copy{cls}">{nl}'
@@ -84,6 +96,25 @@ def services(t):
     return "\n".join(out)
 
 
+
+def filters(t):
+    """Botones para filtrar la galería. Solo aparecen las categorías con proyectos."""
+    usadas = {PROJECT_CATEGORY.get(p[0], "otros") for p in PROJECTS}
+    lab = 1 if t["lang"] == "es" else 2
+    out = []
+    for cat in CATEGORIES:
+        clave, texto = cat[0], cat[lab]
+        if clave != "todos" and clave not in usadas:
+            continue
+        activo = ' class="active"' if clave == "todos" else ""
+        pres = "true" if clave == "todos" else "false"
+        out.append(
+            f'        <button type="button" data-filter="{clave}"{activo} '
+            f'aria-pressed="{pres}">{texto}</button>'
+        )
+    return "\n".join(out)
+
+
 def projects(t):
     idx = 3 if t["lang"] == "es" else 4
     out = []
@@ -93,9 +124,12 @@ def projects(t):
             f'                <p class="p-line">{l}</p>' for l in p[idx]
         )
         out.append(
-            f'          <figure class="gallery-item" tabindex="0">\n'
-            f'            <img src="{rel(t, "assets/img/" + img)}" alt="{title}" '
-            f'loading="lazy" decoding="async">\n'
+            f'          <figure class="gallery-item" tabindex="0" '
+            f'data-cat="{PROJECT_CATEGORY.get(img, "otros")}">\n'
+            f'            <picture>'
+            f'<source srcset="{rel(t, "assets/img/" + os.path.splitext(img)[0])}.webp" type="image/webp">'
+            f'<img src="{rel(t, "assets/img/" + img)}" alt="{title}" width="369" height="492" '
+            f'loading="lazy" decoding="async"></picture>\n'
             f'            <figcaption class="overlay">\n'
             f'              <p class="p-title">{title}</p>\n'
             f'              <p class="p-place">{place}</p>\n'
@@ -199,6 +233,8 @@ def render(t):
 
 <main id="main">
 
+  <h1 class="sr-only">{t['h1']}</h1>
+
   <!-- ============ HERO ============ -->
   <section class="hero" id="home" data-section>
     <div class="hero-slides">
@@ -221,8 +257,11 @@ def render(t):
 {chr(10).join('        <p>' + p + '</p>' for p in t['about'])}
         <div class="person">
           <div class="avatar">
-            <img src="{rel(t, 'assets/img/team-martin.png')}" alt="{t['person']}"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="{rel(t, 'assets/img/team-martin.webp')}" type="image/webp">
+              <img src="{rel(t, 'assets/img/team-martin.jpg')}" alt="{t['person']}"
+                   width="141" height="142" loading="lazy" decoding="async">
+            </picture>
           </div>
           <p class="name">{t['person']}</p>
           <p class="role">{t['role']}</p>
@@ -248,6 +287,9 @@ def render(t):
   <section class="projects" id="proyectos" data-section>
     <div class="col">
       <h2 class="panel-title">{t['projects_title']}</h2>
+      <div class="gal-filters" role="group" aria-label="{t['projects_title']}">
+{filters(t)}
+      </div>
     </div>
     <div class="gallery-wrap">
       <button class="gal-arrow prev" type="button" aria-label="{t['prev']}">

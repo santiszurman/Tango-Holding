@@ -83,12 +83,14 @@
 
 <main id="main">
 
+  <h1 class="sr-only">Tango Holding — real estate investments in the United States</h1>
+
   <!-- ============ HERO ============ -->
   <section class="hero" id="home" data-section>
     <div class="hero-slides">
-        <div class="hero-slide active"><img src="../assets/img/hero-1.jpg" alt="" decoding="async"></div>
-        <div class="hero-slide"><img src="../assets/img/hero-2.jpg" alt="" loading="lazy" decoding="async"></div>
-        <div class="hero-slide"><img src="../assets/img/hero-3.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="hero-slide active"><picture><source srcset="../assets/img/hero-1.webp" type="image/webp"><img src="../assets/img/hero-1.jpg" alt="" width="1440" height="960" fetchpriority="high" decoding="async"></picture></div>
+        <div class="hero-slide"><picture><source data-srcset="../assets/img/hero-2.webp" type="image/webp"><img data-src="../assets/img/hero-2.jpg" alt="" width="1440" height="960" decoding="async"></picture></div>
+        <div class="hero-slide"><picture><source data-srcset="../assets/img/hero-3.webp" type="image/webp"><img data-src="../assets/img/hero-3.jpg" alt="" width="1440" height="960" decoding="async"></picture></div>
     </div>
     <div class="hero-copy">
         <div class="slide-copy active">
@@ -124,8 +126,11 @@
         <p>Our services are <b>customized and personalized to meet the diverse needs of our investors</b>.</p>
         <div class="person">
           <div class="avatar">
-            <img src="../assets/img/team-martin.png" alt="Martin Szurman"
-                 loading="lazy" decoding="async">
+            <picture>
+              <source srcset="../assets/img/team-martin.webp" type="image/webp">
+              <img src="../assets/img/team-martin.jpg" alt="Martin Szurman"
+                   width="141" height="142" loading="lazy" decoding="async">
+            </picture>
           </div>
           <p class="name">Martin Szurman</p>
           <p class="role">Partner</p>
@@ -151,7 +156,7 @@
           </div>
           <div class="service">
             <img src="../assets/img/icon-3-duediligence.png" alt="" width="100" height="100" loading="lazy" decoding="async">
-            <h3>PSA NEGOTIATION<br>AND DUE<br>DILLIGENCE</h3>
+            <h3>PSA NEGOTIATION<br>AND DUE<br>DILIGENCE</h3>
           </div>
           <div class="service">
             <img src="../assets/img/icon-4-society.png" alt="" width="100" height="100" loading="lazy" decoding="async">
@@ -170,14 +175,21 @@
   <section class="projects" id="proyectos" data-section>
     <div class="col">
       <h2 class="panel-title">PROJECTS</h2>
+      <div class="gal-filters" role="group" aria-label="PROJECTS">
+        <button type="button" data-filter="todos" class="active" aria-pressed="true">ALL</button>
+        <button type="button" data-filter="multifamily" aria-pressed="false">MULTIFAMILY</button>
+        <button type="button" data-filter="comercial" aria-pressed="false">COMMERCIAL</button>
+        <button type="button" data-filter="condominio" aria-pressed="false">CONDO</button>
+        <button type="button" data-filter="otros" aria-pressed="false">OTHER</button>
+      </div>
     </div>
     <div class="gallery-wrap">
       <button class="gal-arrow prev" type="button" aria-label="Previous">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
       <div class="gallery">
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-01.jpg" alt="UPPER WEST SIDE" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="comercial">
+            <picture><source srcset="../assets/img/proj-01.webp" type="image/webp"><img src="../assets/img/proj-01.jpg" alt="UPPER WEST SIDE" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">UPPER WEST SIDE</p>
               <p class="p-place">MANHATTAN, NY</p>
@@ -187,8 +199,8 @@
                 <p class="p-line">Bond Vet &amp; Blank Street Coffee</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-02.jpg" alt="HAGGARD FARM" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-02.webp" type="image/webp"><img src="../assets/img/proj-02.jpg" alt="HAGGARD FARM" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">HAGGARD FARM</p>
               <p class="p-place">PLANO (DALLAS), TX</p>
@@ -198,8 +210,8 @@
                 <p class="p-line">350 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-03.jpg" alt="561 PACIFIC" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="condominio">
+            <picture><source srcset="../assets/img/proj-03.webp" type="image/webp"><img src="../assets/img/proj-03.jpg" alt="561 PACIFIC" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">561 PACIFIC</p>
               <p class="p-place">BOERUM HILL, BROOKLYN NY</p>
@@ -208,8 +220,8 @@
                 <p class="p-line">High-end Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-04.jpg" alt="THE STOCKTON" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-04.webp" type="image/webp"><img src="../assets/img/proj-04.jpg" alt="THE STOCKTON" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">THE STOCKTON</p>
               <p class="p-place">SUWANEE (METRO ATLANTA), GA</p>
@@ -219,8 +231,8 @@
                 <p class="p-line">350 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-05.jpg" alt="ADRIA VENICE APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-05.webp" type="image/webp"><img src="../assets/img/proj-05.jpg" alt="ADRIA VENICE APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">ADRIA VENICE APARTMENTS</p>
               <p class="p-place">VENICE, FL</p>
@@ -230,8 +242,8 @@
                 <p class="p-line">335 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-06.jpeg" alt="THE PARKER APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-06.webp" type="image/webp"><img src="../assets/img/proj-06.jpeg" alt="THE PARKER APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">THE PARKER APARTMENTS</p>
               <p class="p-place">ACWORTH (METRO ATLANTA), GA</p>
@@ -241,8 +253,8 @@
                 <p class="p-line">330 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-07.jpg" alt="HIGHLAND DISTRICT" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-07.webp" type="image/webp"><img src="../assets/img/proj-07.jpg" alt="HIGHLAND DISTRICT" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">HIGHLAND DISTRICT</p>
               <p class="p-place">TYSONS CORNER, WASHINGTON DC</p>
@@ -252,8 +264,8 @@
                 <p class="p-line">389 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-08.jpg" alt="WESTGATE MARKET" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="comercial">
+            <picture><source srcset="../assets/img/proj-08.webp" type="image/webp"><img src="../assets/img/proj-08.jpg" alt="WESTGATE MARKET" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">WESTGATE MARKET</p>
               <p class="p-place">HOUSTON, TX</p>
@@ -263,8 +275,8 @@
                 <p class="p-line">Panera Bread, Massage Envy, Applebee´s, My Eyelab, Vitamin Shoppe</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-09.jpg" alt="BLACKROCK COMMONS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="comercial">
+            <picture><source srcset="../assets/img/proj-09.webp" type="image/webp"><img src="../assets/img/proj-09.jpg" alt="BLACKROCK COMMONS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">BLACKROCK COMMONS</p>
               <p class="p-place">HOUSTON, TX</p>
@@ -273,8 +285,8 @@
                 <p class="p-line">Chase Bank, Starbucks, NVA, Wingstop</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-10.jpg" alt="THE LACY AT SOUTH MAIN" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-10.webp" type="image/webp"><img src="../assets/img/proj-10.jpg" alt="THE LACY AT SOUTH MAIN" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">THE LACY AT SOUTH MAIN</p>
               <p class="p-place">KENNESAW (METRO ATLANTA), GA</p>
@@ -284,8 +296,8 @@
                 <p class="p-line">330 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-11.jpg" alt="MAREN VENICE APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-11.webp" type="image/webp"><img src="../assets/img/proj-11.jpg" alt="MAREN VENICE APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">MAREN VENICE APARTMENTS</p>
               <p class="p-place">VENICE, FL</p>
@@ -295,8 +307,8 @@
                 <p class="p-line">337 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-12.jpg" alt="LAKE ZURICH" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="comercial">
+            <picture><source srcset="../assets/img/proj-12.webp" type="image/webp"><img src="../assets/img/proj-12.jpg" alt="LAKE ZURICH" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">LAKE ZURICH</p>
               <p class="p-place">CHICAGO, IL</p>
@@ -304,8 +316,8 @@
                 <p class="p-line">Strip Mall in Suburban Chicago</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-13.jpg" alt="GWINNETT COUNTY" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-13.webp" type="image/webp"><img src="../assets/img/proj-13.jpg" alt="GWINNETT COUNTY" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">GWINNETT COUNTY</p>
               <p class="p-place">ATLANTA, GEORGIA</p>
@@ -315,8 +327,8 @@
                 <p class="p-line">657 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-14.jpg" alt="BROADWAY &amp; 91 ST" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="condominio">
+            <picture><source srcset="../assets/img/proj-14.webp" type="image/webp"><img src="../assets/img/proj-14.jpg" alt="BROADWAY &amp; 91 ST" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">BROADWAY &amp; 91 ST</p>
               <p class="p-place">MANHATTAN, NY</p>
@@ -325,8 +337,8 @@
                 <p class="p-line">High-end Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-15.jpg" alt="HIGHPOINT SQUARE" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="comercial">
+            <picture><source srcset="../assets/img/proj-15.webp" type="image/webp"><img src="../assets/img/proj-15.jpg" alt="HIGHPOINT SQUARE" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">HIGHPOINT SQUARE</p>
               <p class="p-place">CHICAGO, IL</p>
@@ -336,8 +348,8 @@
                 <p class="p-line">Bank of America, Wendy´s, Buffalo Wild Wings, O´Reilly´s</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-16.jpg" alt="AT&amp;T STORE" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="comercial">
+            <picture><source srcset="../assets/img/proj-16.webp" type="image/webp"><img src="../assets/img/proj-16.jpg" alt="AT&amp;T STORE" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">AT&amp;T STORE</p>
               <p class="p-place">ATLANTA, GA</p>
@@ -345,8 +357,8 @@
                 <p class="p-line">NNN - Single Tenant Store</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-17.jpeg" alt="THE CREST AT SOUTH POINT" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-17.webp" type="image/webp"><img src="../assets/img/proj-17.jpeg" alt="THE CREST AT SOUTH POINT" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">THE CREST AT SOUTH POINT</p>
               <p class="p-place">MCDONOUGH (METRO ATLANTA), GA</p>
@@ -356,8 +368,8 @@
                 <p class="p-line">387 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-18.jpg" alt="65 NEWKIRK" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-18.webp" type="image/webp"><img src="../assets/img/proj-18.jpg" alt="65 NEWKIRK" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">65 NEWKIRK</p>
               <p class="p-place">JOURNAL SQUARE - NEW JERSEY</p>
@@ -366,8 +378,8 @@
                 <p class="p-line">29 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-19.jpg" alt="HAMILTON LANDING" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="otros">
+            <picture><source srcset="../assets/img/proj-19.webp" type="image/webp"><img src="../assets/img/proj-19.jpg" alt="HAMILTON LANDING" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">HAMILTON LANDING</p>
               <p class="p-place">NOVATO, CA</p>
@@ -375,8 +387,8 @@
                 <p class="p-line">Suburban Class A Office Campus</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-20.jpg" alt="CLEAR LAKE VISTA" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-20.webp" type="image/webp"><img src="../assets/img/proj-20.jpg" alt="CLEAR LAKE VISTA" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">CLEAR LAKE VISTA</p>
               <p class="p-place">SAVANNAH - GEORGIA</p>
@@ -386,8 +398,8 @@
                 <p class="p-line">297 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-21.jpg" alt="AIRPORT CROSSING APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-21.webp" type="image/webp"><img src="../assets/img/proj-21.jpg" alt="AIRPORT CROSSING APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">AIRPORT CROSSING APARTMENTS</p>
               <p class="p-place">AUSTIN, TX</p>
@@ -397,8 +409,8 @@
                 <p class="p-line">256 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-22.jpg" alt="THE RADLEY APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-22.webp" type="image/webp"><img src="../assets/img/proj-22.jpg" alt="THE RADLEY APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">THE RADLEY APARTMENTS</p>
               <p class="p-place">AUSTIN, TX</p>
@@ -408,8 +420,8 @@
                 <p class="p-line">328 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-23.jpg" alt="SPRINGSIDE APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-23.webp" type="image/webp"><img src="../assets/img/proj-23.jpg" alt="SPRINGSIDE APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">SPRINGSIDE APARTMENTS</p>
               <p class="p-place">POWDER SPRINGS (METRO ATLANTA), GA</p>
@@ -419,8 +431,8 @@
                 <p class="p-line">228 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-24.jpg" alt="THE TAYLOR AT GREENWAY" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-24.webp" type="image/webp"><img src="../assets/img/proj-24.jpg" alt="THE TAYLOR AT GREENWAY" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">THE TAYLOR AT GREENWAY</p>
               <p class="p-place">COLORADO SPRINGS - CO</p>
@@ -430,8 +442,8 @@
                 <p class="p-line">330 Units &amp; Amenities</p>
             </figcaption>
           </figure>
-          <figure class="gallery-item" tabindex="0">
-            <img src="../assets/img/proj-25.jpg" alt="NEUHAUS LAKE WORTH APARTMENTS" loading="lazy" decoding="async">
+          <figure class="gallery-item" tabindex="0" data-cat="multifamily">
+            <picture><source srcset="../assets/img/proj-25.webp" type="image/webp"><img src="../assets/img/proj-25.jpg" alt="NEUHAUS LAKE WORTH APARTMENTS" width="369" height="492" loading="lazy" decoding="async"></picture>
             <figcaption class="overlay">
               <p class="p-title">NEUHAUS LAKE WORTH APARTMENTS</p>
               <p class="p-place">DALLAS FORT WORTH - TEXAS</p>

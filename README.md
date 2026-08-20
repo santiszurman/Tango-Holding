@@ -5,25 +5,18 @@ JavaScript puros. Sin frameworks, sin build obligatorio, sin dependencias.
 
 ---
 
-## PASO 0 — Poner las imágenes (hacelo primero)
+## PASO 0 — Las imágenes
 
-La carpeta `assets/img/` viene **vacía** porque las 38 imágenes (46 MB) se descargaron
-aparte, directamente desde el CDN de Wix, en un archivo llamado **`tango-assets.zip`**
-que quedó en tu carpeta de **Descargas**.
+Si esta carpeta salió de **`tangoholding-web-completo.zip`**, las imágenes ya están
+adentro de `assets/img/` (40 archivos) y `assets/img/lb/` (78 fotos de las ventanas
+emergentes). No hay nada que hacer: seguí al paso siguiente.
 
-1. Descomprimí `tango-assets.zip`.
-2. Copiá los 38 archivos **adentro de `assets/img/`**.
+Si salió de **`tangoholding-web-codigo.zip`** (la versión liviana, sin imágenes), hay que
+copiar a mano el contenido de `assets/img/` desde el ZIP completo.
 
-Tiene que quedar así:
-
-```
-assets/img/logo.png
-assets/img/hero-1.jpg   hero-2.jpg   hero-3.jpg
-assets/img/about-bg.jpg  services-bg.jpg  contact-bg.jpg
-assets/img/team-martin.png
-assets/img/icon-1-analysis.png … icon-5-assetmgmt.png
-assets/img/proj-01.jpg … proj-25.jpg
-```
+Falta una sola imagen, `assets/img/rep-hero.jpg` (la portada de las páginas de reportes).
+Mientras no esté, esas páginas muestran un degradé azul en su lugar. Se baja de
+`static.wixstatic.com/media/405a64_a1224dc8d97e4858b2d05e6d1db96cec~mv2.jpg`.
 
 Para ver el sitio en tu compu antes de publicarlo, abrí `index.html` con doble clic.
 (El formulario solo funciona una vez publicado en Netlify.)

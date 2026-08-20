@@ -16,6 +16,49 @@ SERVICES = [
 ]
 
 # Proyectos: (imagen, título, ubicación, [líneas de detalle])
+# ---------------------------------------------------------------------------
+# Categorías de la galería de proyectos
+# ---------------------------------------------------------------------------
+# El orden de esta lista es el orden de los botones del filtro. "todos" siempre va
+# primero. Si una categoría se queda sin proyectos, su botón no aparece.
+CATEGORIES = [
+    ("todos",      "TODOS",       "ALL"),
+    ("multifamily","MULTIFAMILY", "MULTIFAMILY"),
+    ("comercial",  "COMERCIAL",   "COMMERCIAL"),
+    ("condominio", "CONDOMINIO",  "CONDO"),
+    ("otros",      "OTROS",       "OTHER"),
+]
+
+# A qué categoría pertenece cada proyecto. La clave es el nombre del archivo de la
+# foto, así se puede cambiar sin tocar el resto de los datos.
+PROJECT_CATEGORY = {
+    "proj-01.jpg":  "comercial",    # UPPER WEST SIDE — retail condo, dos locales
+    "proj-02.jpg":  "multifamily",  # HAGGARD FARM
+    "proj-03.jpg":  "condominio",   # 561 PACIFIC — prime condo development
+    "proj-04.jpg":  "multifamily",  # THE STOCKTON
+    "proj-05.jpg":  "multifamily",  # ADRIA VENICE
+    "proj-06.jpeg": "multifamily",  # THE PARKER
+    "proj-07.jpg":  "multifamily",  # HIGHLAND DISTRICT
+    "proj-08.jpg":  "comercial",    # WESTGATE MARKET — class A retail center
+    "proj-09.jpg":  "comercial",    # BLACKROCK COMMONS — class A retail center
+    "proj-10.jpg":  "multifamily",  # THE LACY AT SOUTH MAIN
+    "proj-11.jpg":  "multifamily",  # MAREN VENICE
+    "proj-12.jpg":  "comercial",    # LAKE ZURICH — strip mall
+    "proj-13.jpg":  "multifamily",  # GWINNETT COUNTY
+    "proj-14.jpg":  "condominio",   # BROADWAY & 91 ST — prime condo development
+    "proj-15.jpg":  "comercial",    # HIGHPOINT SQUARE — class A retail center
+    "proj-16.jpg":  "comercial",    # AT&T STORE — NNN single tenant
+    "proj-17.jpeg": "multifamily",  # THE CREST AT SOUTH POINT
+    "proj-18.jpg":  "multifamily",  # 65 NEWKIRK — 29 units
+    "proj-19.jpg":  "otros",        # HAMILTON LANDING — office campus
+    "proj-20.jpg":  "multifamily",  # CLEAR LAKE VISTA
+    "proj-21.jpg":  "multifamily",  # AIRPORT CROSSING
+    "proj-22.jpg":  "multifamily",  # THE RADLEY
+    "proj-23.jpg":  "multifamily",  # SPRINGSIDE
+    "proj-24.jpg":  "multifamily",  # THE TAYLOR AT GREENWAY
+    "proj-25.jpg":  "multifamily",  # NEUHAUS LAKE WORTH
+}
+
 PROJECTS = [
     ("proj-01.jpg",  "UPPER WEST SIDE", "MANHATTAN, NY",
      ["Retail Condo", "Dos Locales Comerciales", "Bond Vet &amp; Blank Street Coffee"],
@@ -109,6 +152,7 @@ ES = {
                     "inversores retornos eficientes en el tiempo."),
     "nav": ["QUIÉNES SOMOS", "SERVICIOS", "PROYECTOS", "CONTACTO"],
     "menu": "MENU",
+    "h1": "Tango Holding — inversiones inmobiliarias en Estados Unidos",
     "about_title": "QUIÉNES SOMOS",
     "about": [
         'Tango Holding es una compañía <b>especialista en la estructuración de inversiones '
@@ -129,8 +173,8 @@ ES = {
     "role": "Partner",
     "services_title": "SERVICIOS",
     "services": [
-        "ANALISIS DEL<br>PERFIL DEL<br>INVERSOR",
-        "BUSQUEDA Y<br>SELECCIÓN DE<br>OPORTUNIDADES",
+        "ANÁLISIS DEL<br>PERFIL DEL<br>INVERSOR",
+        "BÚSQUEDA Y<br>SELECCIÓN DE<br>OPORTUNIDADES",
         "DUE DILIGENCE<br>Y NEGOCIACIÓN",
         "ESTRUCTURA<br>SOCIETARIA Y<br>TRIBUTARIA",
         "ASSET<br>MANAGEMENT",
@@ -159,6 +203,7 @@ EN = {
                     "investors efficient returns over time."),
     "nav": ["ABOUT US", "SERVICES", "PROJECTS", "CONTACT"],
     "menu": "MENU",
+    "h1": "Tango Holding — real estate investments in the United States",
     "about_title": "ABOUT US",
     "about": [
         'Tango Holding is a <b>Real Estate Investment firm</b>, with the main challenge of '
@@ -179,7 +224,7 @@ EN = {
     "services": [
         "INVESTOR'S<br>PROFILE<br>ANALYSIS",
         "IDENTIFY THE<br>OPPORTUNITY",
-        "PSA NEGOTIATION<br>AND DUE<br>DILLIGENCE",
+        "PSA NEGOTIATION<br>AND DUE<br>DILIGENCE",
         "CORPORATE AND<br>TAX STRUCTURE",
         "ASSET<br>MANAGEMENT",
     ],

@@ -54,11 +54,22 @@
   var zTop = 1;
 
   function show(i, instant) {
-    current = (i + slides.length) % slides.length;
+    var next = (i + slides.length) % slides.length;
+    var prev = slides[current];
+    // Clic repetido en el mismo punto: no hay nada que hacer.
+    if (!instant && next === current && prev && prev.classList.contains('shown')) { return; }
+    current = next;
     // La foto entrante se apila ARRIBA de todo y aparece con un fundido; la
     // anterior nunca se desvanece, se queda opaca abajo. Así el fondo nunca
     // llega a verse y no hay parpadeo negro.
     var slide = slides[current];
+    if (prev && prev !== slide) {
+      // Si se cambia de foto más rápido que el fundido, la que sale se fija
+      // opaca al instante para que abajo siempre haya una imagen entera.
+      prev.style.transition = 'none';
+      prev.classList.add('shown');
+      void prev.offsetHeight;
+    }
     if (slide) {
       zTop += 1;
       slide.style.transition = 'none';
@@ -82,6 +93,18 @@
     timer = setInterval(function () { show(current + 1); }, DELAY);
   }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+  /* Las fotos 2 y 3 del hero no se bajan al abrir la página: recién cuando
+     terminó de cargar todo lo demás. Así la primera vista pesa mucho menos. */
+  function cargarFotosDiferidas() {
+    [].slice.call(document.querySelectorAll('.hero-slide [data-src], .hero-slide [data-srcset]'))
+      .forEach(function (el) {
+        if (el.dataset.srcset) { el.srcset = el.dataset.srcset; delete el.dataset.srcset; }
+        if (el.dataset.src) { el.src = el.dataset.src; delete el.dataset.src; }
+      });
+  }
+  if (document.readyState === 'complete') { cargarFotosDiferidas(); }
+  else { window.addEventListener('load', cargarFotosDiferidas); }
 
   var slidesBox = document.querySelector('.hero-slides');
   if (slidesBox) { slidesBox.classList.add('js'); }
@@ -114,6 +137,26 @@
       gallery.scrollBy({ left: step() * 2, behavior: 'smooth' });
     });
   }
+
+  /* ---------------- Filtro de la galería ---------------- */
+  var filtros = [].slice.call(document.querySelectorAll('.gal-filters button'));
+  var fichas = [].slice.call(document.querySelectorAll('.gallery-item'));
+
+  function filtrar(cat) {
+    fichas.forEach(function (f) {
+      f.hidden = (cat !== 'todos' && f.dataset.cat !== cat);
+    });
+    filtros.forEach(function (b) {
+      var on = b.dataset.filter === cat;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (gallery) { gallery.scrollLeft = 0; }
+  }
+
+  filtros.forEach(function (b) {
+    b.addEventListener('click', function () { filtrar(b.dataset.filter); });
+  });
 
   /* ---------------- Puntos de navegación lateral ---------------- */
   var sections = [].slice.call(document.querySelectorAll('[data-section]'));

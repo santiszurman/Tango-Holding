@@ -9,8 +9,9 @@
 .rep-hero {
   min-height: 954px;
   margin-top: var(--header-h);
-  /* Si falta rep-hero.jpg el hero queda con este degradado, no roto. */
-  background: linear-gradient(160deg, #0b2a45 0%, #123f4a 55%, #1d5c58 100%);
+  /* Mientras falte rep-hero.jpg, el hero usa este degradado en el azul de la
+     marca (antes tiraba a verde, que no es un color de Tango). */
+  background: linear-gradient(160deg, #041f3d 0%, #053160 55%, #0a4478 100%);
 }
 .rep-hero .col { min-height: 954px; display: flow-root; }
 
@@ -19,7 +20,7 @@
   margin: 141px 0 0;
   min-height: 372px;
   padding: 100px 60px 60px 126px;
-  background: linear-gradient(90deg, rgba(5, 49, 96, .5) 0%, rgb(22, 62, 60) 100%);
+  background: linear-gradient(90deg, rgba(4, 31, 61, .55) 0%, rgba(5, 49, 96, .92) 100%);
 }
 .rep-hero-panel h1 {
   font-family: var(--display);
